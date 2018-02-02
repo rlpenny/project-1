@@ -21,7 +21,6 @@ class Media:
 		self.author = json_dict['artistName']
 		self.year = json_dict['releaseDate'][:4]
 
-
 	def __str__(self):
 		return(self.title + " by " + self.author + " (" + (self.year) + ")")
 
@@ -41,9 +40,9 @@ class Song(Media):
 		else:
 			super().process_json_dict()
 			self.year = json_dict["releaseDate"][:4]
-            self.album = json_dict["collectionName"]
-            self.genre = json_dict["primaryGenreName"]
-            self.length = json_dict["trackTimeMillis"]
+			self.album = json_dict["collectionName"]
+			self.genre = json_dict["primaryGenreName"]
+			self.length = json_dict["trackTimeMillis"]
 
 
 	def __str__(self):
@@ -64,7 +63,7 @@ class Movies(Media):
 		else:
 			super().process_json_dict()
 			self.rating = json_dict["contentAdvisoryRating"]
-            self.movie_length= json_dict["trackTimeMillis"]
+			self.movie_length= json_dict["trackTimeMillis"]
 
 	def __str__(self):
 		return(super().__str__() + "[" + self.rating + "]")
@@ -75,9 +74,10 @@ class Movies(Media):
 
 
 
-a = Media(json_dict)
-print(len(a))
+a = Movies(json_dict)
 print(a.title)
+b = Song(json_dict)
+print(b.title)
 
 
 
